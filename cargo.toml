@@ -1,0 +1,20 @@
+[package]
+name = "elevate-cli"
+version = "0.1.0"
+authors = ["whatsacomputertho"]
+edition = "2021"
+description = "An elevator simulation command line utility based on the elevate-lib Rust package"
+readme = "README.md"
+homepage = "https://docs.rs/elevate-cli"
+repository = "https://github.com/whatsacomputertho/elevate-cli"
+license-file = "LICENSE"
+keywords = ["elevator","simulation","library","rust","elevate"]
+categories = ["simulation","visualization"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rand = "0.8.5"
+crossterm = "0.27.0"
+elevate-lib = "0.1.0"
+clap = { version = "4.4.6", features = [ "derive" ]}
