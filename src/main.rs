@@ -7,7 +7,7 @@ use crate::cli::ElevatorCli;
 use elevate_lib::building::Building;
 use elevate_lib::elevators::Elevators;
 use elevate_lib::floors::Floors;
-use elevate_lib::controller::{ElevatorController, RandomController};
+use elevate_lib::controller::{ElevatorController, NearestController};
 use std::{thread, time};
 use std::io::{Write, stdout};
 use crossterm::{terminal, cursor, QueueableCommand};
@@ -41,9 +41,9 @@ fn main() {
     );
 
     //Initialize the controller
-    let controller_rng = rand::thread_rng();
-    let mut controller = RandomController::from(
-        building, controller_rng
+    //let controller_rng = rand::thread_rng();
+    let mut controller = NearestController::from(
+        building//, controller_rng
     );
 
     //Initialize the RNG and stdout
