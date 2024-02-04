@@ -7,11 +7,14 @@ use crate::cli::ElevatorCli;
 use elevate_lib::building::Building;
 use elevate_lib::elevators::Elevators;
 use elevate_lib::floors::Floors;
-use elevate_lib::controller::{ElevatorController, NearestController};
+use elevate_lib::controller::{ElevatorController, RandomController};
 use std::{thread, time};
 use std::io::{Write, stdout};
 use crossterm::{terminal, cursor, QueueableCommand};
 use clap::Parser;
+use rand::Rng;
+use rand::SeedableRng;
+use rand::rngs::StdRng;
 
 //Main function
 fn main() {
@@ -41,9 +44,9 @@ fn main() {
     );
 
     //Initialize the controller
-    //let controller_rng = rand::thread_rng();
-    let mut controller = NearestController::from(
-        building//, controller_rng
+    let controller_rng = StdRng::from_seed(rand::thread_rng().gen());
+    let mut controller = RandomController::from(
+        building, controller_rng, 0.05_f64
     );
 
     //Initialize the RNG and stdout
