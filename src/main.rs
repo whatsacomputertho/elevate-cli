@@ -58,7 +58,7 @@ fn main() {
         controller.building.gen_people_leaving(&mut rng);
 
         //Move people on and off the elevators and out of the building
-        controller.building.flush_first_floor();
+        controller.building.flush_and_update_tips(&mut rng);
         controller.building.exchange_people_on_elevator();
 
         //Update the elevators
