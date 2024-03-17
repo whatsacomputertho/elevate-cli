@@ -19,7 +19,7 @@ fn main() {
     let cli_args = ElevatorCli::parse();
     let num_floors: usize = match cli_args.floors {
         Some(x) => x as usize,
-        None => 4_usize
+        None => 6_usize
     };
     let num_elevators: usize = match cli_args.elevators {
         Some(x) => x as usize,
@@ -27,7 +27,7 @@ fn main() {
     };
     let expected_arrivals: f64 = match cli_args.arrivals {
         Some(x) => x as f64,
-        None => 3.0_f64
+        None => 10.0_f64
     };
     let floor_capacity: usize = match cli_args.floor_capacity {
         Some(x) => x as usize,
@@ -68,7 +68,7 @@ fn main() {
         controller.building.gen_people_leaving(&mut rng);
 
         //Move people on and off the elevators and out of the building
-        controller.building.flush_first_floor();
+        controller.building.flush_and_update_tips(&mut rng);
         controller.building.exchange_people_on_elevator();
 
         //Update the elevators
