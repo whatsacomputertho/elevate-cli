@@ -29,5 +29,13 @@ pub struct ElevatorCli {
 
     /// Expected number of arrivals per time step
     #[arg(long="expected-arrivals")]
-    pub arrivals: Option<f64>
+    pub arrivals: Option<f64>,
+
+    /// Max people a floor can hold
+    #[arg(long="floor-capacity")]
+    pub floor_capacity: Option<usize>,
+
+    /// Max people an elevator can hold
+    #[arg(long="elevator-capacity")]
+    pub elevator_capacity: Option<usize>
 }

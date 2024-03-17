@@ -27,7 +27,15 @@ fn main() {
     };
     let expected_arrivals: f64 = match cli_args.arrivals {
         Some(x) => x as f64,
-        None => 0.2_f64
+        None => 3.0_f64
+    };
+    let floor_capacity: usize = match cli_args.floor_capacity {
+        Some(x) => x as usize,
+        None => 100_usize
+    };
+    let elevator_capacity: usize = match cli_args.elevator_capacity {
+        Some(x) => x as usize,
+        None => 10_usize
     };
 
     //Initialize the building
@@ -35,6 +43,8 @@ fn main() {
         num_floors,
         num_elevators,
         expected_arrivals,
+        floor_capacity,
+        elevator_capacity,
         5.0_f64, //Base energy spent moving elevator up
         2.5_f64, //Base energy spent moving elevator down
         0.5_f64  //Coefficient for energy spent by moving N people
